@@ -2,6 +2,7 @@
 
 namespace IICN\Subscription;
 
+use IICN\Subscription\Commands\CheckSubscriptionRenewals;
 use IICN\Subscription\Commands\RetryCheckPendingTransaction;
 use IICN\Subscription\Http\Middleware\AuthSubscription;
 use IICN\Subscription\Http\Middleware\ValidateSubscription;
@@ -80,7 +81,8 @@ class SubscriptionServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
              $this->commands([
-                 RetryCheckPendingTransaction::class
+                 RetryCheckPendingTransaction::class,
+                 CheckSubscriptionRenewals::class,
              ]);
         }
     }
